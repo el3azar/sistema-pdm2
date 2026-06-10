@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Inventario Vehículos GPO02</string>
+
+    <!-- Servidores -->
+    <string name="btn_local">Servidor Local</string>
+    <string name="btn_externo">Servidor Externo</string>
+
+    <!-- Menú principal -->
+    <string name="menu_marcas">Marcas</string>
+    <string name="menu_vehiculos">Vehículos</string>
+    <string name="menu_buscar_vehiculo">Buscar Vehículo</string>
+    <string name="menu_insertar_vehiculo">Registrar Vehículo</string>
+    <string name="menu_reparaciones">Reparaciones</string>
+    <string name="menu_insertar_reparacion">Registrar Reparación</string>
+    <string name="menu_ventas">Ventas</string>
+    <string name="menu_insertar_venta">Registrar Venta</string>
+    <string name="menu_estadisticas">Estadísticas</string>
+
+    <!-- Campos comunes -->
+    <string name="hint_vin">VIN del vehículo</string>
+    <string name="hint_id_vehiculo">ID del vehículo</string>
+    <string name="hint_id_taller">ID del taller</string>
+    <string name="hint_id_importador">ID del importador</string>
+    <string name="hint_fecha">Fecha (YYYY-MM-DD)</string>
+    <string name="hint_descripcion">Descripción</string>
+    <string name="hint_precio">Precio</string>
+    <string name="hint_anio">Año</string>
+    <string name="hint_color">Color</string>
+    <string name="hint_estado">Estado</string>
+    <string name="hint_id_modelo">ID del modelo</string>
+    <string name="hint_id_tipo">ID tipo vehículo</string>
+    <string name="hint_id_seccion">ID sección</string>
+    <string name="hint_id_importacion">ID importación</string>
+    <string name="hint_id_marca">ID de la marca</string>
+    <string name="btn_buscar">Buscar</string>
+    <string name="btn_registrar">Registrar</string>
+</resources>
