@@ -1,6 +1,6 @@
 # Estado del Proyecto — Etapa 2
 **PDM115 — Grupo 02 | Sistema de Inventario de Vehículos**
-Actualizado: 2026-06-09
+Actualizado: 2026-06-10
 
 ---
 
@@ -29,8 +29,8 @@ Actualizado: 2026-06-09
 - [x] `ControladorServicio.java` — HTTP GET, POST y parseo JSON
 - [x] `AndroidManifest.xml` — permisos de internet configurados
 
-### Android — Activities base (funcionales, pendientes de refinamiento visual)
-- [x] `MainActivity` — menú principal
+### Android — UI base (diseño aplicado, pendiente refinamiento por integrante)
+- [x] `MainActivity` — menú principal con paleta navy blue
 - [x] `MarcasActivity` — lista marcas
 - [x] `VehiculosActivity` — lista vehículos
 - [x] `BuscarVehiculoActivity` — buscar por VIN
@@ -41,16 +41,22 @@ Actualizado: 2026-06-09
 - [x] `InsertarVentaActivity` — registrar venta
 - [x] `EstadisticasActivity` — conteos por estado y tipo
 
+### Servidor externo (InfinityFree)
+- [x] BD `if0_41996611_inventario_gpo02` creada y con datos
+- [x] PHP subidos a `https://serviciosguia8.page.gd/inventario_gpo02/`
+- [x] Endpoints responden correctamente en navegador
+- [ ] **Pendiente:** conexión desde emulador Android cuelga (problema de red del emulador con InfinityFree) — funciona en dispositivo físico
+
 ---
 
 ## Pendiente
 
 ### Prioridad alta (antes de entrega)
-- [ ] Refinamiento visual de cada Activity (layouts, colores, tipografía)
-- [ ] Validaciones más específicas en formularios de inserción
+- [ ] Refinamiento visual de cada Activity (cada integrante refina las suyas)
+- [ ] Implementar servicios adicionales propios (ver `SERVICIOS_REFERENCIA.md`)
+- [ ] Validaciones en formularios de inserción
 - [ ] Probar todas las Activities contra servidor local
-- [ ] Subir `backend/` a onrender.com y actualizar `Urls.java` con URL real
-- [ ] Probar todas las Activities contra servidor externo
+- [ ] Probar servidor externo desde dispositivo físico
 
 ### Documento de entrega (Parte 2)
 - [ ] Portada
@@ -63,21 +69,33 @@ Actualizado: 2026-06-09
 
 ---
 
-## Asignación de Activities por integrante
+## Asignación de Activities y servicios adicionales por integrante
 
-Completar esta tabla antes de empezar a refinar:
+### Activities base (refinar UI + probar contra local y externo)
 
-| Activity | Integrante responsable | Estado |
+| Activity | Integrante | Tablas relacionadas |
 |---|---|---|
-| `MarcasActivity` | | pendiente refinamiento |
-| `VehiculosActivity` | | pendiente refinamiento |
-| `BuscarVehiculoActivity` | | pendiente refinamiento |
-| `InsertarVehiculoActivity` | | pendiente refinamiento |
-| `ReparacionesActivity` | | pendiente refinamiento |
-| `InsertarReparacionActivity` | | pendiente refinamiento |
-| `VentasActivity` | | pendiente refinamiento |
-| `InsertarVentaActivity` | | pendiente refinamiento |
-| `EstadisticasActivity` | | pendiente refinamiento |
+| `MarcasActivity` | Eleazar | base del sistema |
+| `EstadisticasActivity` | Eleazar | VEHICULO, VENTA |
+| `VehiculosActivity` | Yami | VEHICULO |
+| `BuscarVehiculoActivity` | Yami | VEHICULO |
+| `InsertarVehiculoActivity` | Yami | VEHICULO |
+| `ReparacionesActivity` | Ricardo | REPARACION, TALLER |
+| `InsertarReparacionActivity` | Ricardo | REPARACION, TALLER |
+| `VentasActivity` | Javier | VENTA, IMPORTADOR |
+| `InsertarVentaActivity` | Javier | VENTA, IMPORTADOR |
+
+### Servicios adicionales a implementar (PHP + Activity nueva)
+
+| Integrante | Servicios PHP a crear | Tablas |
+|---|---|---|
+| **Gaby** | `ws_importadores_lista`, `ws_importaciones_lista`, `ws_importaciones_por_importador`, `ws_telefonos_importador` | IMPORTADOR, IMPORTACION, TELEFONO_IMPORTADOR |
+| **Yami** | `ws_vehiculos_por_estado`, `ws_desperfectos_lista`, `ws_desperfectos_insert` | VEHICULO, DETALLE_DESPERFECTO |
+| **Eleazar** | `ws_transportes_lista`, `ws_personal_lista`, `ws_movimientos_lista`, `ws_movimientos_insert` | TRANSPORTE, PERSONAL_INTERNO, MOVIMIENTO |
+| **Ricardo** | `ws_talleres_lista`, `ws_talleres_autorizados`, `ws_reparaciones_update`, `ws_reparaciones_por_taller` | TALLER, REPARACION |
+| **Javier** | `ws_bodegas_lista`, `ws_secciones_lista`, `ws_secciones_disponibles`, `ws_ventas_por_importador` | BODEGA, SECCION, VENTA |
+
+> Ver `SERVICIOS_REFERENCIA.md` para el detalle de cada servicio (parámetros, respuesta esperada, ejemplo de URL).
 
 ---
 

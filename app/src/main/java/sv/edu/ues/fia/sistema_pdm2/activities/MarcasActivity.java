@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONObject;
@@ -23,6 +24,7 @@ public class MarcasActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
+        ((TextView) findViewById(R.id.tvTitulo)).setText("Marcas");
         listView = findViewById(R.id.listView);
     }
 
@@ -31,15 +33,15 @@ public class MarcasActivity extends AppCompatActivity {
         String url   = Urls.build(servidor, Urls.MARCAS_LISTA);
 
         new Thread(() -> {
-            String json       = ControladorServicio.get(url, this);
-            List<JSONObject>  datos = ControladorServicio.parsearArray(json, this);
-            List<String>      filas = new ArrayList<>();
+            String json      = ControladorServicio.get(url, this);
+            List<JSONObject> datos = ControladorServicio.parsearArray(json, this);
+            List<String>     filas = new ArrayList<>();
             for (JSONObject o : datos) {
                 try { filas.add(o.getString("ID_MARCA") + " - " + o.getString("NOMBRE_MARCA")); }
                 catch (Exception ignored) {}
             }
             runOnUiThread(() -> listView.setAdapter(
-                new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, filas)));
+                new ArrayAdapter<>(this, R.layout.item_lista, filas)));
         }).start();
     }
 }

@@ -55,8 +55,8 @@ public class EstadisticasActivity extends AppCompatActivity {
             } catch (Exception ignored) {}
 
             runOnUiThread(() -> {
-                listEstado.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, filasEstado));
-                listTipo.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, filasTipo));
+                listEstado.setAdapter(new ArrayAdapter<>(this, R.layout.item_lista, filasEstado));
+                listTipo.setAdapter(new ArrayAdapter<>(this, R.layout.item_lista, filasTipo));
             });
         }).start();
     }

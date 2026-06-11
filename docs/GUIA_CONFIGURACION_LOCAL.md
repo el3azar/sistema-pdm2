@@ -16,7 +16,7 @@ Seguir estos pasos en orden. No saltar ninguno.
 ## Paso 1 — Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/sistema-pdm2.git
+git clone https://github.com/el3azar/sistema-pdm2.git
 ```
 
 Abrir Android Studio → `Open` → seleccionar la carpeta `sistema-pdm2/`.

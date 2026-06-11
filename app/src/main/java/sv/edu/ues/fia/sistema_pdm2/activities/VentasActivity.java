@@ -50,7 +50,7 @@ public class VentasActivity extends AppCompatActivity {
                 } catch (Exception ignored) {}
             }
             runOnUiThread(() -> listView.setAdapter(
-                new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, filas)));
+                new ArrayAdapter<>(this, R.layout.item_lista, filas)));
         }).start();
     }
 }

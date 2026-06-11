@@ -1,135 +1,105 @@
 package sv.edu.ues.fia.sistema_pdm2;
 
-import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class ControladorServicio {
 
-    private static final String TAG             = "ControladorServicio";
-    private static final int    TIMEOUT_CONEXION = 5000;
-    private static final int    TIMEOUT_LECTURA  = 7000;
+    private static final String TAG = "ControladorServicio";
+
+    private static final OkHttpClient CLIENT = new OkHttpClient.Builder()
+            .connectTimeout(5, TimeUnit.SECONDS)
+            .readTimeout(8, TimeUnit.SECONDS)
+            .writeTimeout(5, TimeUnit.SECONDS)
+            .build();
 
     // ── GET ────────────────────────────────────────────────────────────────
-    // Realiza una petición HTTP GET y devuelve la respuesta como String JSON.
-    // Devuelve null si hay error de conexión.
-    public static String get(String urlStr, Context ctx) {
+    public static String get(String urlStr, android.content.Context ctx) {
+        Request request = new Request.Builder()
+                .url(urlStr)
+                .header("User-Agent", "Mozilla/5.0 (Android)")
+                .header("Accept", "application/json")
+                .build();
         try {
-            URL url = new URL(urlStr);
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("GET");
-            con.setConnectTimeout(TIMEOUT_CONEXION);
-            con.setReadTimeout(TIMEOUT_LECTURA);
-            con.connect();
-
-            int codigo = con.getResponseCode();
+            Response response = CLIENT.newCall(request).execute();
+            int codigo = response.code();
             if (codigo != 200) {
                 Log.e(TAG, "HTTP " + codigo + " en: " + urlStr);
                 return null;
             }
-
-            BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
-            StringBuilder sb = new StringBuilder();
-            String linea;
-            while ((linea = br.readLine()) != null) sb.append(linea);
-            br.close();
-            con.disconnect();
-            return sb.toString();
-
+            return response.body() != null ? response.body().string() : null;
         } catch (Exception e) {
-            Log.e(TAG, "Error GET: " + e.getMessage());
-            Toast.makeText(ctx, "Error de conexión", Toast.LENGTH_SHORT).show();
+            Log.e(TAG, "Error GET [" + e.getClass().getSimpleName() + "]: " + e.getMessage());
             return null;
         }
     }
 
     // ── POST ───────────────────────────────────────────────────────────────
-    // Realiza una petición HTTP POST enviando parámetros en el body.
     // parametros: "clave1=valor1&clave2=valor2"
-    public static String post(String urlStr, String parametros, Context ctx) {
-        try {
-            URL url = new URL(urlStr);
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("POST");
-            con.setConnectTimeout(TIMEOUT_CONEXION);
-            con.setReadTimeout(TIMEOUT_LECTURA);
-            con.setDoOutput(true);
-            con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-            con.connect();
-
-            if (parametros != null && !parametros.isEmpty()) {
-                OutputStream os = con.getOutputStream();
-                os.write(parametros.getBytes("UTF-8"));
-                os.flush();
-                os.close();
+    public static String post(String urlStr, String parametros, android.content.Context ctx) {
+        FormBody.Builder bodyBuilder = new FormBody.Builder();
+        if (parametros != null && !parametros.isEmpty()) {
+            for (String par : parametros.split("&")) {
+                String[] kv = par.split("=", 2);
+                if (kv.length == 2) bodyBuilder.addEncoded(kv[0], kv[1]);
             }
-
-            int codigo = con.getResponseCode();
+        }
+        RequestBody body = bodyBuilder.build();
+        Request request = new Request.Builder()
+                .url(urlStr)
+                .header("User-Agent", "Mozilla/5.0 (Android)")
+                .post(body)
+                .build();
+        try {
+            Response response = CLIENT.newCall(request).execute();
+            int codigo = response.code();
             if (codigo != 200) {
                 Log.e(TAG, "HTTP " + codigo + " en: " + urlStr);
                 return null;
             }
-
-            BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
-            StringBuilder sb = new StringBuilder();
-            String linea;
-            while ((linea = br.readLine()) != null) sb.append(linea);
-            br.close();
-            con.disconnect();
-            return sb.toString();
-
+            return response.body() != null ? response.body().string() : null;
         } catch (Exception e) {
-            Log.e(TAG, "Error POST: " + e.getMessage());
-            Toast.makeText(ctx, "Error de conexión", Toast.LENGTH_SHORT).show();
+            Log.e(TAG, "Error POST [" + e.getClass().getSimpleName() + "]: " + e.getMessage());
             return null;
         }
     }
 
     // ── Parseo JSON ────────────────────────────────────────────────────────
-    // Convierte un JSON array string en lista de JSONObject.
-    // Usar cuando el servicio devuelve [ {...}, {...} ]
-    public static List<JSONObject> parsearArray(String json, Context ctx) {
+    public static List<JSONObject> parsearArray(String json, android.content.Context ctx) {
         List<JSONObject> lista = new ArrayList<>();
         if (json == null) return lista;
         try {
             JSONArray array = new JSONArray(json);
-            for (int i = 0; i < array.length(); i++) {
-                lista.add(array.getJSONObject(i));
-            }
+            for (int i = 0; i < array.length(); i++) lista.add(array.getJSONObject(i));
         } catch (Exception e) {
             Log.e(TAG, "Error parseando array: " + e.getMessage());
-            Toast.makeText(ctx, "Error procesando respuesta", Toast.LENGTH_SHORT).show();
         }
         return lista;
     }
 
-    // Convierte un JSON object string en JSONObject.
-    // Usar cuando el servicio devuelve { "campo": valor }
-    public static JSONObject parsearObjeto(String json, Context ctx) {
+    public static JSONObject parsearObjeto(String json, android.content.Context ctx) {
         if (json == null) return null;
         try {
             return new JSONObject(json);
         } catch (Exception e) {
             Log.e(TAG, "Error parseando objeto: " + e.getMessage());
-            Toast.makeText(ctx, "Error procesando respuesta", Toast.LENGTH_SHORT).show();
             return null;
         }
     }
 
-    // Extrae el valor de "resultado" de la respuesta de un INSERT.
-    // Devuelve true si resultado == 1
-    public static boolean fueExitoso(String json, Context ctx) {
+    public static boolean fueExitoso(String json, android.content.Context ctx) {
         JSONObject obj = parsearObjeto(json, ctx);
         if (obj == null) return false;
         try {

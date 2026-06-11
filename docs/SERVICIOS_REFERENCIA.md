@@ -1,8 +1,8 @@
 # Referencia de Servicios Web
 **PDM115 — Grupo 02 | Etapa 2**
 
-Base URL local:  `http://TU_IP/inventario_gpo02/`
-Base URL externa: `https://tu-app.onrender.com/inventario_gpo02/`
+Base URL local:    `http://TU_IP/inventario_gpo02/`
+Base URL externa:  `https://serviciosguia8.page.gd/inventario_gpo02/`
 
 ---
 
@@ -186,3 +186,300 @@ String url = Urls.build(servidor, Urls.MARCAS_LISTA);
 String url = Urls.build(servidor, Urls.VEHICULOS_BUSCAR, "vin=" + vin);
 String url = Urls.build(servidor, Urls.VENTAS_LISTA, "fecha=" + fecha);
 ```
+
+---
+
+## Servicios adicionales recomendados por integrante
+
+Extensiones naturales basadas en los módulos que cada integrante desarrolló en Etapa 1. No son obligatorios, pero cubren las tablas que cada quien ya conoce.
+
+---
+
+### Gaby — Importador, Importación, Teléfono Importador
+
+#### ws_importadores_lista.php
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_importadores_lista.php` |
+| Método | GET |
+| Parámetros | Ninguno |
+| Ejemplo | `ws_importadores_lista.php` |
+
+Respuesta:
+```json
+[
+  { "ID_IMPORTADOR": "1", "NOMBRE_IMPORTADOR": "Carlos", "APELLIDO_IMPORTADOR": "Pérez" }
+]
+```
+
+#### ws_importaciones_lista.php
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_importaciones_lista.php` |
+| Método | GET |
+| Parámetros | Ninguno |
+| Ejemplo | `ws_importaciones_lista.php` |
+
+Respuesta:
+```json
+[
+  { "ID_IMPORTACION": "1", "FECHA_IMPORTACION": "2026-01-15", "NOMBRE_IMPORTADOR": "Carlos", "APELLIDO_IMPORTADOR": "Pérez" }
+]
+```
+
+#### ws_importaciones_por_importador.php
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_importaciones_por_importador.php` |
+| Método | GET |
+| Parámetros | `id_importador` (obligatorio) |
+| Ejemplo | `ws_importaciones_por_importador.php?id_importador=1` |
+
+Respuesta:
+```json
+[
+  { "ID_IMPORTACION": "1", "FECHA_IMPORTACION": "2026-01-15" }
+]
+```
+
+#### ws_telefonos_importador.php
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_telefonos_importador.php` |
+| Método | GET |
+| Parámetros | `id_importador` (obligatorio) |
+| Ejemplo | `ws_telefonos_importador.php?id_importador=1` |
+
+Respuesta:
+```json
+[
+  { "ID_TELEFONO": "1", "NUMERO_TELEFONO": "7555-1234", "ID_IMPORTADOR": "1" }
+]
+```
+
+---
+
+### Yami — Vehículo, Detalle Desperfecto, Foto Desperfecto
+
+#### ws_vehiculos_por_estado.php
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_vehiculos_por_estado.php` |
+| Método | GET |
+| Parámetros | `estado` (obligatorio) |
+| Ejemplo | `ws_vehiculos_por_estado.php?estado=en bodega` |
+
+Respuesta: mismo formato que `ws_vehiculos_lista.php` pero filtrado por estado.
+
+#### ws_desperfectos_lista.php
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_desperfectos_lista.php` |
+| Método | GET |
+| Parámetros | `id_vehiculo` (obligatorio) |
+| Ejemplo | `ws_desperfectos_lista.php?id_vehiculo=1` |
+
+Respuesta:
+```json
+[
+  { "ID_DETALLE": "1", "DESCRIPCION_DESPERFECTO": "Golpe en puerta", "ID_VEHICULO": "1" }
+]
+```
+
+#### ws_desperfectos_insert.php
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_desperfectos_insert.php` |
+| Método | GET |
+| Parámetros | `id_vehiculo` (obligatorio), `descripcion` (obligatorio) |
+| Ejemplo | `ws_desperfectos_insert.php?id_vehiculo=1&descripcion=Golpe en parachoque` |
+
+Respuesta:
+```json
+{ "resultado": 1, "mensaje": "Desperfecto registrado", "id": 3 }
+```
+
+#### ws_fotos_desperfecto.php
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_fotos_desperfecto.php` |
+| Método | GET |
+| Parámetros | `id_detalle` (obligatorio) |
+| Ejemplo | `ws_fotos_desperfecto.php?id_detalle=1` |
+
+Respuesta:
+```json
+[
+  { "ID_FOTO": "1", "RUTA_FOTO": "/fotos/desperfecto_1.jpg", "ID_DETALLE": "1" }
+]
+```
+
+---
+
+### Eleazar — Transporte, Personal Interno, Movimiento
+
+#### ws_transportes_lista.php
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_transportes_lista.php` |
+| Método | GET |
+| Parámetros | Ninguno |
+| Ejemplo | `ws_transportes_lista.php` |
+
+Respuesta:
+```json
+[
+  { "ID_TRANSPORTE": "1", "PLACA": "P-123-456", "CAPACIDAD": "5", "NOMBRE_EMPRESA": "Transportes SA" }
+]
+```
+
+#### ws_personal_lista.php
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_personal_lista.php` |
+| Método | GET |
+| Parámetros | Ninguno |
+| Ejemplo | `ws_personal_lista.php` |
+
+Respuesta:
+```json
+[
+  { "ID_PERSONAL": "1", "NOMBRE_PERSONAL": "Ana", "APELLIDO_PERSONAL": "García", "CARGO": "Bodeguero" }
+]
+```
+
+#### ws_movimientos_lista.php
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_movimientos_lista.php` |
+| Método | GET |
+| Parámetros | `id_vehiculo` (opcional) |
+| Ejemplo sin filtro | `ws_movimientos_lista.php` |
+| Ejemplo con filtro | `ws_movimientos_lista.php?id_vehiculo=1` |
+
+Respuesta:
+```json
+[
+  { "ID_MOVIMIENTO": "1", "FECHA_MOVIMIENTO": "2026-06-01", "VIN": "JT2S3FEJ3M1234567", "PLACA": "P-123-456", "NOMBRE_PERSONAL": "Ana" }
+]
+```
+
+#### ws_movimientos_insert.php
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_movimientos_insert.php` |
+| Método | GET |
+| Parámetros | `id_vehiculo` (obligatorio), `id_transporte` (obligatorio), `id_personal` (obligatorio), `fecha` (obligatorio) |
+| Ejemplo | `ws_movimientos_insert.php?id_vehiculo=1&id_transporte=1&id_personal=1&fecha=2026-06-10` |
+
+Respuesta:
+```json
+{ "resultado": 1, "mensaje": "Movimiento registrado", "id": 5 }
+```
+
+---
+
+### Ricardo — Taller, Reparación
+
+#### ws_talleres_lista.php
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_talleres_lista.php` |
+| Método | GET |
+| Parámetros | Ninguno |
+| Ejemplo | `ws_talleres_lista.php` |
+
+Respuesta:
+```json
+[
+  { "ID_TALLER": "1", "NOMBRE_TALLER": "Taller Martínez", "AUTORIZADO": "1", "DIRECCION": "Col. Escalón" }
+]
+```
+
+#### ws_talleres_autorizados.php
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_talleres_autorizados.php` |
+| Método | GET |
+| Parámetros | Ninguno |
+| Ejemplo | `ws_talleres_autorizados.php` |
+
+Respuesta: mismo formato que `ws_talleres_lista.php` pero solo donde `AUTORIZADO = 1`.
+
+#### ws_reparaciones_update.php
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_reparaciones_update.php` |
+| Método | GET |
+| Parámetros | `id_reparacion` (obligatorio), `apto_para_venta` (0 o 1), `requiere_otra_reparacion` (0 o 1), `fecha_fin` (opcional) |
+| Ejemplo | `ws_reparaciones_update.php?id_reparacion=1&apto_para_venta=1&fecha_fin=2026-06-10` |
+
+Respuesta:
+```json
+{ "resultado": 1, "mensaje": "Reparacion actualizada" }
+```
+
+#### ws_reparaciones_por_taller.php
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_reparaciones_por_taller.php` |
+| Método | GET |
+| Parámetros | `id_taller` (obligatorio) |
+| Ejemplo | `ws_reparaciones_por_taller.php?id_taller=1` |
+
+Respuesta: mismo formato que `ws_reparaciones_lista.php` pero filtrado por taller.
+
+---
+
+### Javier — Bodega, Sección, Venta
+
+#### ws_bodegas_lista.php
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_bodegas_lista.php` |
+| Método | GET |
+| Parámetros | Ninguno |
+| Ejemplo | `ws_bodegas_lista.php` |
+
+Respuesta:
+```json
+[
+  { "ID_BODEGA": "1", "NOMBRE_BODEGA": "Bodega Central", "DIRECCION": "Soyapango" }
+]
+```
+
+#### ws_secciones_lista.php
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_secciones_lista.php` |
+| Método | GET |
+| Parámetros | `id_bodega` (opcional) |
+| Ejemplo sin filtro | `ws_secciones_lista.php` |
+| Ejemplo con filtro | `ws_secciones_lista.php?id_bodega=1` |
+
+Respuesta:
+```json
+[
+  { "ID_SECCION": "1", "NIVEL_SECCION": "A", "CAPACIDAD_MAX": "10", "CAPACIDAD_ACTUAL": "7", "NOMBRE_BODEGA": "Bodega Central" }
+]
+```
+
+#### ws_secciones_disponibles.php
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_secciones_disponibles.php` |
+| Método | GET |
+| Parámetros | Ninguno |
+| Ejemplo | `ws_secciones_disponibles.php` |
+
+Respuesta: mismo formato que `ws_secciones_lista.php` pero solo secciones donde `CAPACIDAD_ACTUAL < CAPACIDAD_MAX`.
+
+#### ws_ventas_por_importador.php
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_ventas_por_importador.php` |
+| Método | GET |
+| Parámetros | `id_importador` (obligatorio) |
+| Ejemplo | `ws_ventas_por_importador.php?id_importador=1` |
+
+Respuesta: mismo formato que `ws_ventas_lista.php` pero filtrado por importador.

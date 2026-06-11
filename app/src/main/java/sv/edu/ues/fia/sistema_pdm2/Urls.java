@@ -8,7 +8,7 @@ public final class Urls {
     private static final String LOCAL   = "http://192.168.0.14/inventario_gpo02/";
     // ───────────────────────────────────────────────────────────────────
 
-    private static final String EXTERNO = "https://tu-app.onrender.com/inventario_gpo02/";
+    private static final String EXTERNO = "https://serviciosguia8.page.gd/inventario_gpo02/";
 
     // Servicios disponibles
     public static final String MARCAS_LISTA          = "ws_marcas_lista.php";

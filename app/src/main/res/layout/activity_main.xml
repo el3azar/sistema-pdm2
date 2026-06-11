@@ -1,58 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_light">
 
+    <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:background="@color/primary_blue"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="24dp"
+        android:paddingBottom="20dp">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
+            android:text="Inventario de Vehículos"
+            android:textColor="@color/white"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:paddingBottom="16dp"/>
+            android:textStyle="bold"/>
 
-        <Button android:id="@+id/btnMarcas"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="@string/menu_marcas" android:onClick="lanzar"/>
-
-        <Button android:id="@+id/btnVehiculos"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="@string/menu_vehiculos" android:onClick="lanzar"/>
-
-        <Button android:id="@+id/btnBuscarVehiculo"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="@string/menu_buscar_vehiculo" android:onClick="lanzar"/>
-
-        <Button android:id="@+id/btnInsertarVehiculo"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="@string/menu_insertar_vehiculo" android:onClick="lanzar"/>
-
-        <Button android:id="@+id/btnReparaciones"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="@string/menu_reparaciones" android:onClick="lanzar"/>
-
-        <Button android:id="@+id/btnInsertarReparacion"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="@string/menu_insertar_reparacion" android:onClick="lanzar"/>
-
-        <Button android:id="@+id/btnVentas"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="@string/menu_ventas" android:onClick="lanzar"/>
-
-        <Button android:id="@+id/btnInsertarVenta"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="@string/menu_insertar_venta" android:onClick="lanzar"/>
-
-        <Button android:id="@+id/btnEstadisticas"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="@string/menu_estadisticas" android:onClick="lanzar"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PDM115 · Grupo 02"
+            android:textColor="@color/primary_blue_light"
+            android:textSize="13sp"
+            android:paddingTop="2dp"/>
 
     </LinearLayout>
-</ScrollView>
+
+    <!-- Menu -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <Button
+                android:id="@+id/btnMarcas"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/menu_marcas"
+                android:onClick="lanzar"/>
+
+            <Button
+                android:id="@+id/btnVehiculos"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/menu_vehiculos"
+                android:onClick="lanzar"/>
+
+            <Button
+                android:id="@+id/btnBuscarVehiculo"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/menu_buscar_vehiculo"
+                android:onClick="lanzar"/>
+
+            <Button
+                android:id="@+id/btnInsertarVehiculo"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/menu_insertar_vehiculo"
+                android:onClick="lanzar"/>
+
+            <Button
+                android:id="@+id/btnReparaciones"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/menu_reparaciones"
+                android:onClick="lanzar"/>
+
+            <Button
+                android:id="@+id/btnInsertarReparacion"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/menu_insertar_reparacion"
+                android:onClick="lanzar"/>
+
+            <Button
+                android:id="@+id/btnVentas"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/menu_ventas"
+                android:onClick="lanzar"/>
+
+            <Button
+                android:id="@+id/btnInsertarVenta"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/menu_insertar_venta"
+                android:onClick="lanzar"/>
+
+            <Button
+                android:id="@+id/btnEstadisticas"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="@string/menu_estadisticas"
+                android:onClick="lanzar"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

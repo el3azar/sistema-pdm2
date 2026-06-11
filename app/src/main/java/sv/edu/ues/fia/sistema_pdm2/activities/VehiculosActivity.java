@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONObject;
@@ -23,6 +24,7 @@ public class VehiculosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
+        ((TextView) findViewById(R.id.tvTitulo)).setText("Vehículos");
         listView = findViewById(R.id.listView);
     }
 
@@ -42,7 +44,7 @@ public class VehiculosActivity extends AppCompatActivity {
                 } catch (Exception ignored) {}
             }
             runOnUiThread(() -> listView.setAdapter(
-                new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, filas)));
+                new ArrayAdapter<>(this, R.layout.item_lista, filas)));
         }).start();
     }
 }
