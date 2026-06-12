@@ -34,6 +34,11 @@
         <activity android:name=".activities.InsertarMovimientoActivity"        android:exported="false"/>
         <activity android:name=".activities.ReporteTransportePersonalActivity" android:exported="false"/>
 
+        <activity android:name=".activities.BodegasActivity"               android:exported="false"/>
+        <activity android:name=".activities.SeccionesActivity"             android:exported="false"/>
+        <activity android:name=".activities.SeccionesDisponiblesActivity"  android:exported="false"/>
+        <activity android:name=".activities.VentasPorImportadorActivity"   android:exported="false"/>
+
     </application>
 
 </manifest>
