@@ -31,6 +31,11 @@
         <activity android:name=".activities.InsertarVentaActivity"    android:exported="false"/>
         <activity android:name=".activities.EstadisticasActivity"     android:exported="false"/>
 
+        <activity android:name=".activities.BodegasActivity"               android:exported="false"/>
+        <activity android:name=".activities.SeccionesActivity"             android:exported="false"/>
+        <activity android:name=".activities.SeccionesDisponiblesActivity"  android:exported="false"/>
+        <activity android:name=".activities.VentasPorImportadorActivity"   android:exported="false"/>
+
     </application>
 
 </manifest>

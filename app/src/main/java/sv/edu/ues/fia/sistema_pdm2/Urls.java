@@ -22,6 +22,12 @@ public final class Urls {
     public static final String ESTADISTICAS          = "ws_estadisticas.php";
     public static final String MODELOS_POR_MARCA     = "ws_modelos_por_marca.php";
 
+    // Javier - Servicios adicionales
+    public static final String BODEGAS_LISTA          = "ws_bodegas_lista.php";
+    public static final String SECCIONES_LISTA        = "ws_secciones_lista.php";
+    public static final String SECCIONES_DISPONIBLES  = "ws_secciones_disponibles.php";
+    public static final String VENTAS_POR_IMPORTADOR  = "ws_ventas_por_importador.php";
+
     // Devuelve la URL base según el servidor elegido (0=Local, 1=Externo)
     public static String base(int servidor) {
         return servidor == 1 ? EXTERNO : LOCAL;

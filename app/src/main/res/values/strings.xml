@@ -15,6 +15,10 @@
     <string name="menu_ventas">Ventas</string>
     <string name="menu_insertar_venta">Registrar Venta</string>
     <string name="menu_estadisticas">Estadísticas</string>
+    <string name="menu_bodegas">Bodegas</string>
+    <string name="menu_secciones">Secciones</string>
+    <string name="menu_secciones_disponibles">Secciones Disponibles</string>
+    <string name="menu_ventas_por_importador">Ventas por Importador</string>
 
     <!-- Campos comunes -->
     <string name="hint_vin">VIN del vehículo</string>
@@ -32,6 +36,7 @@
     <string name="hint_id_seccion">ID sección</string>
     <string name="hint_id_importacion">ID importación</string>
     <string name="hint_id_marca">ID de la marca</string>
+    <string name="hint_id_bodega">ID de la bodega (opcional)</string>
     <string name="btn_buscar">Buscar</string>
     <string name="btn_registrar">Registrar</string>
 </resources>
