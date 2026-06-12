@@ -28,6 +28,12 @@ public final class Urls {
     public static final String REPORTE_TRANSPORTE_PERSONAL = "ws_reporte_transporte_personal.php";
     public static final String MOVIMIENTOS_CATALOGOS       = "ws_movimientos_catalogos.php";
 
+    //Servicios adicionales
+    public static final String VEHICULOS_POR_ESTADO  = "ws_vehiculos_por_estado.php";
+    public static final String DESPERFECTOS_LISTA    = "ws_desperfectos_lista.php";
+    public static final String DESPERFECTOS_INSERT   = "ws_desperfectos_insert.php";
+    public static final String FOTOS_DESPERFECTO     = "ws_fotos_desperfecto.php";
+
     // Devuelve la URL base según el servidor elegido (0=Local, 1=Externo)
     public static String base(int servidor) {
         return servidor == 1 ? EXTERNO : LOCAL;

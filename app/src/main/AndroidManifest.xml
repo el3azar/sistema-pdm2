@@ -33,6 +33,9 @@
         <activity android:name=".activities.HistorialMovimientosActivity"      android:exported="false"/>
         <activity android:name=".activities.InsertarMovimientoActivity"        android:exported="false"/>
         <activity android:name=".activities.ReporteTransportePersonalActivity" android:exported="false"/>
+        <activity android:name=".activities.DesperfectosActivity"     android:exported="false"/>
+        <activity android:name=".activities.InsertarDesperfectoActivity" android:exported="false"/>
+        <activity android:name=".activities.FotosDesperfectoActivity"   android:exported="false"/>
 
     </application>
 
