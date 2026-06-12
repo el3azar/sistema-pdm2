@@ -30,6 +30,9 @@
         <activity android:name=".activities.VentasActivity"           android:exported="false"/>
         <activity android:name=".activities.InsertarVentaActivity"    android:exported="false"/>
         <activity android:name=".activities.EstadisticasActivity"     android:exported="false"/>
+        <activity android:name=".activities.HistorialMovimientosActivity"      android:exported="false"/>
+        <activity android:name=".activities.InsertarMovimientoActivity"        android:exported="false"/>
+        <activity android:name=".activities.ReporteTransportePersonalActivity" android:exported="false"/>
 
     </application>
 

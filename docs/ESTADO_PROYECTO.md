@@ -1,6 +1,6 @@
 # Estado del Proyecto — Etapa 2
 **PDM115 — Grupo 02 | Sistema de Inventario de Vehículos**
-Actualizado: 2026-06-10
+Actualizado: 2026-06-11
 
 ---
 
@@ -11,7 +11,7 @@ Actualizado: 2026-06-10
 - [x] Script de datos iniciales (`bd_mysql_datos.sql`)
 - [x] Llaves foráneas con `ON DELETE RESTRICT ON UPDATE CASCADE`
 
-### Backend PHP (10 servicios)
+### Backend PHP (14 servicios)
 - [x] `conexion.php` — configuración de conexión
 - [x] `ws_marcas_lista.php`
 - [x] `ws_vehiculos_lista.php`
@@ -23,6 +23,10 @@ Actualizado: 2026-06-10
 - [x] `ws_ventas_insert.php`
 - [x] `ws_estadisticas.php`
 - [x] `ws_modelos_por_marca.php`
+- [x] `ws_movimientos_historial.php` — kardex de movimientos por VIN (Eleazar)
+- [x] `ws_movimientos_insert.php` — registra movimiento y actualiza estado del vehículo (Eleazar)
+- [x] `ws_reporte_transporte_personal.php` — reporte por bodega/personal/transporte con filtro de fechas (Eleazar)
+- [x] `ws_movimientos_catalogos.php` — catálogos para Spinners del formulario (apoyo)
 
 ### Android — Infraestructura
 - [x] `Urls.java` — URLs centralizadas (solo cambiar IP aquí)
@@ -40,12 +44,15 @@ Actualizado: 2026-06-10
 - [x] `VentasActivity` — lista ventas
 - [x] `InsertarVentaActivity` — registrar venta
 - [x] `EstadisticasActivity` — conteos por estado y tipo
+- [x] `HistorialMovimientosActivity` — kardex de movimientos por VIN (Eleazar)
+- [x] `InsertarMovimientoActivity` — formulario con Spinners y fecha con calendario (Eleazar)
+- [x] `ReporteTransportePersonalActivity` — reporte con filtro de fechas por calendario (Eleazar)
 
 ### Servidor externo (InfinityFree)
 - [x] BD `if0_41996611_inventario_gpo02` creada y con datos
 - [x] PHP subidos a `https://serviciosguia8.page.gd/inventario_gpo02/`
-- [x] Endpoints responden correctamente en navegador
-- [ ] **Pendiente:** conexión desde emulador Android cuelga (problema de red del emulador con InfinityFree) — funciona en dispositivo físico
+- [x] Endpoints responden correctamente **en navegador**
+- [ ] **Bloqueado:** InfinityFree no sirve como API — devuelve un desafío JavaScript (cookie `__test`) a todo cliente que no sea navegador, así que la app nunca recibe el JSON. No es problema del emulador ni del código. Ver `PROBLEMA_INFINITYFREE.md`. Pendiente decidir hosting de reemplazo.
 
 ---
 
@@ -53,7 +60,7 @@ Actualizado: 2026-06-10
 
 ### Prioridad alta (antes de entrega)
 - [ ] Refinamiento visual de cada Activity (cada integrante refina las suyas)
-- [ ] Implementar servicios adicionales propios (ver `SERVICIOS_REFERENCIA.md`)
+- [ ] Implementar servicios adicionales propios (ver `SERVICIOS_REFERENCIA.md`) — **Eleazar ya completó los suyos**
 - [ ] Validaciones en formularios de inserción
 - [ ] Probar todas las Activities contra servidor local
 - [ ] Probar servidor externo desde dispositivo físico
@@ -91,7 +98,7 @@ Actualizado: 2026-06-10
 |---|---|---|
 | **Gaby** | `ws_importadores_lista`, `ws_importaciones_lista`, `ws_importaciones_por_importador`, `ws_telefonos_importador` | IMPORTADOR, IMPORTACION, TELEFONO_IMPORTADOR |
 | **Yami** | `ws_vehiculos_por_estado`, `ws_desperfectos_lista`, `ws_desperfectos_insert` | VEHICULO, DETALLE_DESPERFECTO |
-| **Eleazar** | `ws_transportes_lista`, `ws_personal_lista`, `ws_movimientos_lista`, `ws_movimientos_insert` | TRANSPORTE, PERSONAL_INTERNO, MOVIMIENTO |
+| **Eleazar** ✅ | `ws_movimientos_historial`, `ws_movimientos_insert`, `ws_reporte_transporte_personal` (+ `ws_movimientos_catalogos` de apoyo) — **implementados y probados en local** | TRANSPORTE, PERSONAL_INTERNO, MOVIMIENTO |
 | **Ricardo** | `ws_talleres_lista`, `ws_talleres_autorizados`, `ws_reparaciones_update`, `ws_reparaciones_por_taller` | TALLER, REPARACION |
 | **Javier** | `ws_bodegas_lista`, `ws_secciones_lista`, `ws_secciones_disponibles`, `ws_ventas_por_importador` | BODEGA, SECCION, VENTA |
 
