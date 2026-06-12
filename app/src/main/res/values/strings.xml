@@ -12,6 +12,7 @@
     <string name="menu_insertar_vehiculo">Registrar Nuevo Vehículo</string>
     <string name="menu_reparaciones">Reparaciones</string>
     <string name="menu_insertar_reparacion">Registrar Reparación</string>
+    <string name="menu_talleres">Reparaciones por Taller</string>
     <string name="menu_ventas">Ventas</string>
     <string name="menu_insertar_venta">Registrar Venta</string>
     <string name="menu_historial_movimientos">Historial de Movimientos</string>
@@ -45,6 +46,8 @@
     <string name="hint_fecha_inicio">Fecha inicio (opcional)</string>
     <string name="hint_fecha_fin">Fecha fin (opcional)</string>
     <string name="hint_id_bodega">ID de la bodega (opcional)</string>
+    <string name="reparaciones_taller_prefix">Reparaciones: %1$s</string>
+    <string name="reparacion_id_label">ID Reparación: %1$s</string>
     <string name="btn_buscar">Buscar</string>
     <string name="btn_registrar">Registrar</string>
     <string name="btn_registrar_movimiento">Registrar movimiento</string>

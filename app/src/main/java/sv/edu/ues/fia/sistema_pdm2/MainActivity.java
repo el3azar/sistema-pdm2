@@ -18,6 +18,7 @@ import sv.edu.ues.fia.sistema_pdm2.activities.InsertarVehiculoActivity;
 import sv.edu.ues.fia.sistema_pdm2.activities.InsertarVentaActivity;
 import sv.edu.ues.fia.sistema_pdm2.activities.MarcasActivity;
 import sv.edu.ues.fia.sistema_pdm2.activities.ReparacionesActivity;
+import sv.edu.ues.fia.sistema_pdm2.activities.TalleresActivity;
 import sv.edu.ues.fia.sistema_pdm2.activities.SeccionesActivity;
 import sv.edu.ues.fia.sistema_pdm2.activities.SeccionesDisponiblesActivity;
 import sv.edu.ues.fia.sistema_pdm2.activities.VehiculosActivity;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         else if (id == R.id.btnInsertarVehiculo)   destino = InsertarVehiculoActivity.class;
         else if (id == R.id.btnReparaciones)       destino = ReparacionesActivity.class;
         else if (id == R.id.btnInsertarReparacion) destino = InsertarReparacionActivity.class;
+        else if (id == R.id.btnTalleres)           destino = TalleresActivity.class;
         else if (id == R.id.btnVentas)             destino = VentasActivity.class;
         else if (id == R.id.btnInsertarVenta)      destino = InsertarVentaActivity.class;
         else if (id == R.id.btnDesperfectos)       destino = DesperfectosActivity.class;

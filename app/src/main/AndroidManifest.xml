@@ -27,6 +27,8 @@
         <activity android:name=".activities.InsertarVehiculoActivity" android:exported="false"/>
         <activity android:name=".activities.ReparacionesActivity"     android:exported="false"/>
         <activity android:name=".activities.InsertarReparacionActivity" android:exported="false"/>
+        <activity android:name=".activities.ActualizarReparacionActivity" android:exported="false"/>
+        <activity android:name=".activities.TalleresActivity" android:exported="false"/>
         <activity android:name=".activities.VentasActivity"           android:exported="false"/>
         <activity android:name=".activities.InsertarVentaActivity"    android:exported="false"/>
         <activity android:name=".activities.EstadisticasActivity"     android:exported="false"/>
