@@ -14,7 +14,6 @@
     <string name="menu_insertar_reparacion">Registrar Reparación</string>
     <string name="menu_ventas">Ventas</string>
     <string name="menu_insertar_venta">Registrar Venta</string>
-    <string name="menu_estadisticas">Estadísticas</string>
     <string name="menu_historial_movimientos">Historial de Movimientos</string>
     <string name="menu_insertar_movimiento">Registrar Movimiento</string>
     <string name="menu_reporte_transporte_personal">Reporte Transporte y Personal</string>
