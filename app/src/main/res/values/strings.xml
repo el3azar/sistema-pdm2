@@ -20,6 +20,10 @@
     <string name="menu_desperfectos">Consultar Desperfectos</string>
     <string name="menu_insertar_desperfecto">Registrar Nuevo Desperfecto</string>
     <string name="menu_estadisticas">Estadísticas del Inventario</string>
+    <string name="menu_bodegas">Bodegas</string>
+    <string name="menu_secciones">Secciones</string>
+    <string name="menu_secciones_disponibles">Secciones Disponibles</string>
+    <string name="menu_ventas_por_importador">Ventas por Importador</string>
 
     <!-- Campos comunes -->
     <string name="hint_vin">VIN del vehículo (17 caracteres)</string>
@@ -40,6 +44,7 @@
     <string name="hint_motivo">Motivo del movimiento</string>
     <string name="hint_fecha_inicio">Fecha inicio (opcional)</string>
     <string name="hint_fecha_fin">Fecha fin (opcional)</string>
+    <string name="hint_id_bodega">ID de la bodega (opcional)</string>
     <string name="btn_buscar">Buscar</string>
     <string name="btn_registrar">Registrar</string>
     <string name="btn_registrar_movimiento">Registrar movimiento</string>
