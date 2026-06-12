@@ -6,17 +6,29 @@ header("Access-Control-Allow-Origin: *");
 
 include 'conexion.php';
 
-$id_tipo_vehiculo = isset($_GET['id_tipo_vehiculo']) ? intval($_GET['id_tipo_vehiculo']) : null;
-$id_seccion       = isset($_GET['id_seccion'])       ? intval($_GET['id_seccion'])       : null;
-$id_modelo        = isset($_GET['id_modelo'])        ? intval($_GET['id_modelo'])        : null;
-$id_importacion   = isset($_GET['id_importacion'])   ? intval($_GET['id_importacion'])   : null;
-$vin              = isset($_GET['vin'])              ? trim($_GET['vin'])               : '';
-$anio             = isset($_GET['anio'])             ? intval($_GET['anio'])            : 0;
-$color            = isset($_GET['color'])            ? trim($_GET['color'])             : '';
-$estado           = isset($_GET['estado'])           ? trim($_GET['estado'])            : '';
+$datos = $_REQUEST;
+
+$id_tipo_vehiculo = isset($datos['id_tipo_vehiculo']) ? intval($datos['id_tipo_vehiculo']) : null;
+$id_seccion       = isset($datos['id_seccion'])       ? intval($datos['id_seccion'])       : null;
+$id_modelo        = isset($datos['id_modelo'])        ? intval($datos['id_modelo'])        : null;
+$id_importacion   = isset($datos['id_importacion'])   ? intval($datos['id_importacion'])   : null;
+$vin              = isset($datos['vin'])              ? trim($datos['vin'])               : '';
+$anio             = isset($datos['anio'])             ? intval($datos['anio'])            : 0;
+$color            = isset($datos['color'])            ? trim($datos['color'])             : '';
+$estado           = isset($datos['estado'])           ? trim($datos['estado'])            : '';
 
 if ($vin === '' || $anio === 0 || $color === '' || $estado === '') {
     echo json_encode(['resultado' => 0, 'mensaje' => 'Faltan parametros requeridos']);
+    exit();
+}
+
+if (strlen($vin) !== 17) {
+    echo json_encode(['resultado' => 0, 'mensaje' => 'El VIN debe tener exactamente 17 caracteres']);
+    exit();
+}
+
+if (!preg_match('/^[\p{L}\s]+$/u', $color)) {
+    echo json_encode(['resultado' => 0, 'mensaje' => 'El color solo debe contener letras']);
     exit();
 }
 
@@ -24,7 +36,7 @@ $sql  = "INSERT INTO VEHICULO (ID_TIPO_VEHICULO, ID_SECCION, ID_MODELO, ID_IMPOR
          VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $con->prepare($sql);
-$stmt->bind_param("iiiiisis", $id_tipo_vehiculo, $id_seccion, $id_modelo, $id_importacion, $vin, $anio, $color, $estado);
+$stmt->bind_param("iiiisiss", $id_tipo_vehiculo, $id_seccion, $id_modelo, $id_importacion, $vin, $anio, $color, $estado);
 
 if ($stmt->execute()) {
     echo json_encode(['resultado' => 1, 'mensaje' => 'Vehiculo registrado', 'id' => $con->insert_id]);

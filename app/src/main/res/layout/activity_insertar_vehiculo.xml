@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -41,7 +42,6 @@
                 app:cardCornerRadius="12dp"
                 app:cardElevation="2dp"
                 app:cardBackgroundColor="@color/white"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_marginBottom="16dp">
 
                 <LinearLayout
@@ -55,12 +55,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/hint_vin"
-                        android:layout_marginBottom="8dp">
+                        android:layout_marginBottom="8dp"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="17">
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/editVin"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="text"/>
+                            android:inputType="textCapCharacters"
+                            android:maxLength="17"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -73,7 +76,8 @@
                             android:id="@+id/editAnio"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="number"/>
+                            android:inputType="number"
+                            android:maxLength="4"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -86,7 +90,7 @@
                             android:id="@+id/editColor"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="text"/>
+                            android:inputType="textCapWords"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -94,12 +98,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/hint_estado"
-                        android:layout_marginBottom="8dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/editEstado"
+                        android:layout_marginBottom="16dp"
+                        app:endIconMode="dropdown_menu">
+
+                        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                            android:id="@+id/spinnerEstado"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"/>
+                            android:layout_height="56dp"
+                            android:inputType="none"/>
+
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -189,7 +196,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:padding="4dp"/>
+                android:padding="4dp"
+                android:textAlignment="center"/>
 
         </LinearLayout>
     </ScrollView>

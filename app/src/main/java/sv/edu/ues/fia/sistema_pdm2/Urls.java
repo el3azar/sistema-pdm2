@@ -5,7 +5,7 @@ public final class Urls {
     private Urls() {}
 
     // ── Cambiar la IP según la máquina de cada integrante ──────────────
-    private static final String LOCAL   = "http://192.168.0.14/inventario_gpo02/";
+    private static final String LOCAL   = "http://10.142.17.92/inventario_gpo02/";
     // ───────────────────────────────────────────────────────────────────
 
     private static final String EXTERNO = "https://serviciosguia8.page.gd/inventario_gpo02/";
@@ -21,6 +21,12 @@ public final class Urls {
     public static final String VENTAS_INSERT         = "ws_ventas_insert.php";
     public static final String ESTADISTICAS          = "ws_estadisticas.php";
     public static final String MODELOS_POR_MARCA     = "ws_modelos_por_marca.php";
+
+    //Servicios adicionales
+    public static final String VEHICULOS_POR_ESTADO  = "ws_vehiculos_por_estado.php";
+    public static final String DESPERFECTOS_LISTA    = "ws_desperfectos_lista.php";
+    public static final String DESPERFECTOS_INSERT   = "ws_desperfectos_insert.php";
+    public static final String FOTOS_DESPERFECTO     = "ws_fotos_desperfecto.php";
 
     // Devuelve la URL base según el servidor elegido (0=Local, 1=Externo)
     public static String base(int servidor) {

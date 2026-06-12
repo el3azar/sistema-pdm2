@@ -6,7 +6,9 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import sv.edu.ues.fia.sistema_pdm2.activities.BuscarVehiculoActivity;
+import sv.edu.ues.fia.sistema_pdm2.activities.DesperfectosActivity;
 import sv.edu.ues.fia.sistema_pdm2.activities.EstadisticasActivity;
+import sv.edu.ues.fia.sistema_pdm2.activities.InsertarDesperfectoActivity;
 import sv.edu.ues.fia.sistema_pdm2.activities.InsertarReparacionActivity;
 import sv.edu.ues.fia.sistema_pdm2.activities.InsertarVehiculoActivity;
 import sv.edu.ues.fia.sistema_pdm2.activities.InsertarVentaActivity;
@@ -35,8 +37,12 @@ public class MainActivity extends AppCompatActivity {
         else if (id == R.id.btnInsertarReparacion) destino = InsertarReparacionActivity.class;
         else if (id == R.id.btnVentas)             destino = VentasActivity.class;
         else if (id == R.id.btnInsertarVenta)      destino = InsertarVentaActivity.class;
+        else if (id == R.id.btnDesperfectos)       destino = DesperfectosActivity.class;
+        else if (id == R.id.btnInsertarDesperfecto) destino = InsertarDesperfectoActivity.class;
         else if (id == R.id.btnEstadisticas)       destino = EstadisticasActivity.class;
 
-        if (destino != null) startActivity(new Intent(this, destino));
+        if (destino != null) {
+            startActivity(new Intent(this, destino));
+        }
     }
 }

@@ -7,31 +7,50 @@
 
     <!-- Menú principal -->
     <string name="menu_marcas">Marcas</string>
-    <string name="menu_vehiculos">Vehículos</string>
-    <string name="menu_buscar_vehiculo">Buscar Vehículo</string>
-    <string name="menu_insertar_vehiculo">Registrar Vehículo</string>
+    <string name="menu_vehiculos">Listar Vehículos por Estado</string>
+    <string name="menu_buscar_vehiculo">Buscar Vehículo por VIN</string>
+    <string name="menu_insertar_vehiculo">Registrar Nuevo Vehículo</string>
     <string name="menu_reparaciones">Reparaciones</string>
     <string name="menu_insertar_reparacion">Registrar Reparación</string>
     <string name="menu_ventas">Ventas</string>
     <string name="menu_insertar_venta">Registrar Venta</string>
-    <string name="menu_estadisticas">Estadísticas</string>
+    <string name="menu_desperfectos">Consultar Desperfectos</string>
+    <string name="menu_insertar_desperfecto">Registrar Nuevo Desperfecto</string>
+    <string name="menu_estadisticas">Estadísticas del Inventario</string>
 
     <!-- Campos comunes -->
-    <string name="hint_vin">VIN del vehículo</string>
-    <string name="hint_id_vehiculo">ID del vehículo</string>
+    <string name="hint_vin">VIN del vehículo (17 caracteres)</string>
+    <string name="hint_id_vehiculo">Seleccione Vehículo</string>
     <string name="hint_id_taller">ID del taller</string>
     <string name="hint_id_importador">ID del importador</string>
     <string name="hint_fecha">Fecha (YYYY-MM-DD)</string>
-    <string name="hint_descripcion">Descripción</string>
-    <string name="hint_precio">Precio</string>
-    <string name="hint_anio">Año</string>
-    <string name="hint_color">Color</string>
-    <string name="hint_estado">Estado</string>
+    <string name="hint_descripcion">Descripción del desperfecto</string>
+    <string name="hint_precio">Precio de venta</string>
+    <string name="hint_anio">Año de fabricación</string>
+    <string name="hint_color">Color exterior</string>
+    <string name="hint_estado">Estado actual</string>
     <string name="hint_id_modelo">ID del modelo</string>
     <string name="hint_id_tipo">ID tipo vehículo</string>
-    <string name="hint_id_seccion">ID sección</string>
+    <string name="hint_id_seccion">ID sección bodega</string>
     <string name="hint_id_importacion">ID importación</string>
     <string name="hint_id_marca">ID de la marca</string>
     <string name="btn_buscar">Buscar</string>
     <string name="btn_registrar">Registrar</string>
+
+    <!-- Listas desplegables (Arrays) -->
+    <string-array name="estados_vehiculo">
+        <item>Todos</item>
+        <item>en bodega</item>
+        <item>en reparacion</item>
+        <item>vendido</item>
+        <item>transito</item>
+    </string-array>
+
+    <string-array name="estados_registro">
+        <item>Seleccionar</item>
+        <item>en bodega</item>
+        <item>en reparacion</item>
+        <item>vendido</item>
+        <item>transito</item>
+    </string-array>
 </resources>

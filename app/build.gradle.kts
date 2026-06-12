@@ -4,16 +4,12 @@ plugins {
 
 android {
     namespace = "sv.edu.ues.fia.sistema_pdm2"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "sv.edu.ues.fia.sistema_pdm2"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
