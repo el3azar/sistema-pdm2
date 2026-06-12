@@ -113,7 +113,31 @@
                 android:id="@+id/btnEstadisticas"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/menu_estadisticas"
+                android:onClick="lanzar"/>
+
+            <Button
+                android:id="@+id/btnHistorialMovimientos"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/menu_historial_movimientos"
+                android:onClick="lanzar"/>
+
+            <Button
+                android:id="@+id/btnInsertarMovimiento"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/menu_insertar_movimiento"
+                android:onClick="lanzar"/>
+
+            <Button
+                android:id="@+id/btnReporteTransportePersonal"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="@string/menu_reporte_transporte_personal"
                 android:onClick="lanzar"/>
 
         </LinearLayout>
