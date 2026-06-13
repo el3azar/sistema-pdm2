@@ -117,7 +117,7 @@ public class DesperfectosActivity extends AppCompatActivity {
             }
 
             runOnUiThread(() -> {
-                listView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, filas));
+                listView.setAdapter(new ArrayAdapter<>(this, R.layout.item_lista_bonita, filas));
                 if (datos.isEmpty()) {
                     Toast.makeText(this, "Sin resultados", Toast.LENGTH_SHORT).show();
                 }
