@@ -75,7 +75,7 @@ public class VehiculosActivity extends AppCompatActivity {
                 if (filas.isEmpty()) {
                     Toast.makeText(this, "No se encontraron vehículos", Toast.LENGTH_SHORT).show();
                 }
-                listView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, filas));
+                listView.setAdapter(new ArrayAdapter<>(this, R.layout.item_lista_bonita, filas));
             });
         }).start();
     }
