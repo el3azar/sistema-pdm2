@@ -5,7 +5,7 @@ public final class Urls {
     private Urls() {}
 
     // ── Cambiar la IP según la máquina de cada integrante ──────────────
-    private static final String LOCAL   = "http://192.168.3.49/inventario_gpo02/";
+    private static final String LOCAL   = "http://192.168.56.1/inventario_gpo02/";
     // ───────────────────────────────────────────────────────────────────
 
     private static final String EXTERNO = "https://serviciosguia8.page.gd/inventario_gpo02/";
@@ -33,8 +33,6 @@ public final class Urls {
     public static final String VEHICULOS_POR_ESTADO  = "ws_vehiculos_por_estado.php";
     public static final String DESPERFECTOS_LISTA    = "ws_desperfectos_lista.php";
     public static final String DESPERFECTOS_INSERT   = "ws_desperfectos_insert.php";
-    public static final String FOTOS_DESPERFECTO     = "ws_fotos_desperfecto.php";
-
     // Javier - Servicios adicionales
     public static final String BODEGAS_LISTA          = "ws_bodegas_lista.php";
     public static final String SECCIONES_LISTA        = "ws_secciones_lista.php";
