@@ -94,6 +94,14 @@
                 android:onClick="lanzar"/>
 
             <Button
+                android:id="@+id/btnTalleres"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/menu_talleres"
+                android:onClick="lanzar"/>
+
+            <Button
                 android:id="@+id/btnVentas"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
@@ -110,11 +118,83 @@
                 android:onClick="lanzar"/>
 
             <Button
+                android:id="@+id/btnVentasPorImportador"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/menu_ventas_por_importador"
+                android:onClick="lanzar"/>
+
+            <Button
                 android:id="@+id/btnEstadisticas"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:layout_marginBottom="8dp"
                 android:text="@string/menu_estadisticas"
+                android:onClick="lanzar"/>
+
+            <Button
+                android:id="@+id/btnHistorialMovimientos"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/menu_historial_movimientos"
+                android:onClick="lanzar"/>
+
+            <Button
+                android:id="@+id/btnInsertarMovimiento"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/menu_insertar_movimiento"
+                android:onClick="lanzar"/>
+
+            <Button
+                android:id="@+id/btnReporteTransportePersonal"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/menu_reporte_transporte_personal"
+                android:onClick="lanzar"/>
+
+            <Button
+                android:id="@+id/btnBodegas"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/menu_bodegas"
+                android:onClick="lanzar"/>
+
+            <Button
+                android:id="@+id/btnSecciones"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/menu_secciones"
+                android:onClick="lanzar"/>
+
+            <Button
+                android:id="@+id/btnSeccionesDisponibles"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/menu_secciones_disponibles"
+                android:onClick="lanzar"/>
+
+            <Button
+                android:id="@+id/btnDesperfectos"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/menu_desperfectos"
+                android:onClick="lanzar"/>
+
+            <Button
+                android:id="@+id/btnInsertarDesperfecto"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/menu_insertar_desperfecto"
                 android:onClick="lanzar"/>
 
             <Button

@@ -27,10 +27,22 @@
         <activity android:name=".activities.InsertarVehiculoActivity" android:exported="false"/>
         <activity android:name=".activities.ReparacionesActivity"     android:exported="false"/>
         <activity android:name=".activities.InsertarReparacionActivity" android:exported="false"/>
+        <activity android:name=".activities.ActualizarReparacionActivity" android:exported="false"/>
+        <activity android:name=".activities.TalleresActivity" android:exported="false"/>
         <activity android:name=".activities.VentasActivity"           android:exported="false"/>
         <activity android:name=".activities.InsertarVentaActivity"    android:exported="false"/>
-        <activity android:name=".activities.EstadisticasActivity"            android:exported="false"/>
+        <activity android:name=".activities.EstadisticasActivity"     android:exported="false"/>
+        <activity android:name=".activities.HistorialMovimientosActivity"      android:exported="false"/>
+        <activity android:name=".activities.InsertarMovimientoActivity"        android:exported="false"/>
+        <activity android:name=".activities.ReporteTransportePersonalActivity" android:exported="false"/>
+        <activity android:name=".activities.DesperfectosActivity"     android:exported="false"/>
+        <activity android:name=".activities.InsertarDesperfectoActivity" android:exported="false"/>
+        <activity android:name=".activities.BodegasActivity"               android:exported="false"/>
+        <activity android:name=".activities.SeccionesActivity"             android:exported="false"/>
+        <activity android:name=".activities.SeccionesDisponiblesActivity"  android:exported="false"/>
+        <activity android:name=".activities.VentasPorImportadorActivity"   android:exported="false"/>
 
+        <!-- Gaby — Importador, Importaciones, Análisis -->
         <activity android:name=".activities.BuscarImportadorActivity"       android:exported="false"/>
         <activity android:name=".activities.DetalleImportadorActivity"      android:exported="false"/>
         <activity android:name=".activities.ImportacionesCompletasActivity" android:exported="false"/>
