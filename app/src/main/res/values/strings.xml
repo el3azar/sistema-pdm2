@@ -25,6 +25,9 @@
     <string name="menu_secciones">Secciones</string>
     <string name="menu_secciones_disponibles">Secciones Disponibles</string>
     <string name="menu_ventas_por_importador">Ventas por Importador</string>
+    <string name="menu_buscar_importador">Buscar Importador</string>
+    <string name="menu_analisis_vehiculos">Análisis de Vehículos</string>
+    <string name="hint_nombre_importador">Nombre o apellido</string>
 
     <!-- Campos comunes -->
     <string name="hint_vin">VIN del vehículo (17 caracteres)</string>
