@@ -47,6 +47,12 @@ public final class Urls {
     public static final String REPARACIONES_UPDATE    = "ws_reparaciones_update.php";
     public static final String REPARACIONES_POR_TALLER = "ws_reparaciones_por_taller.php";
 
+    // Gaby — Importador, Importaciones, Análisis
+    public static final String IMPORTADORES_BUSCAR     = "ws_importadores_buscar.php";
+    public static final String IMPORTADOR_COMPLETO     = "ws_importador_completo.php";
+    public static final String IMPORTACIONES_COMPLETAS = "ws_importaciones_completas.php";
+    public static final String ANALISIS_VEHICULOS      = "ws_analisis_vehiculos.php";
+
     // Devuelve la URL base según el servidor elegido (0=Local, 1=Externo)
     public static String base(int servidor) {
         return servidor == 1 ? EXTERNO : LOCAL;

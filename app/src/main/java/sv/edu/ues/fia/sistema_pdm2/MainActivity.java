@@ -24,6 +24,8 @@ import sv.edu.ues.fia.sistema_pdm2.activities.SeccionesDisponiblesActivity;
 import sv.edu.ues.fia.sistema_pdm2.activities.VehiculosActivity;
 import sv.edu.ues.fia.sistema_pdm2.activities.VentasActivity;
 import sv.edu.ues.fia.sistema_pdm2.activities.VentasPorImportadorActivity;
+import sv.edu.ues.fia.sistema_pdm2.activities.AnalisisVehiculosActivity;
+import sv.edu.ues.fia.sistema_pdm2.activities.BuscarImportadorActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,7 +57,9 @@ public class MainActivity extends AppCompatActivity {
         else if (id == R.id.btnBodegas)            destino = BodegasActivity.class;
         else if (id == R.id.btnSecciones)          destino = SeccionesActivity.class;
         else if (id == R.id.btnSeccionesDisponibles) destino = SeccionesDisponiblesActivity.class;
-        else if (id == R.id.btnVentasPorImportador) destino = VentasPorImportadorActivity.class;
+        else if (id == R.id.btnVentasPorImportador)  destino = VentasPorImportadorActivity.class;
+        else if (id == R.id.btnBuscarImportador)     destino = BuscarImportadorActivity.class;
+        else if (id == R.id.btnAnalisisVehiculos)    destino = AnalisisVehiculosActivity.class;
 
         if (destino != null) {
             startActivity(new Intent(this, destino));
