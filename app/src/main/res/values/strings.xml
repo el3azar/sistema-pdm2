@@ -34,4 +34,9 @@
     <string name="hint_id_marca">ID de la marca</string>
     <string name="btn_buscar">Buscar</string>
     <string name="btn_registrar">Registrar</string>
+
+    <!-- Importadores -->
+    <string name="hint_nombre_importador">Nombre o apellido</string>
+    <string name="menu_buscar_importador">Buscar Importador</string>
+    <string name="menu_analisis_vehiculos">Análisis de Vehículos</string>
 </resources>

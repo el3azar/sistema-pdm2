@@ -29,7 +29,12 @@
         <activity android:name=".activities.InsertarReparacionActivity" android:exported="false"/>
         <activity android:name=".activities.VentasActivity"           android:exported="false"/>
         <activity android:name=".activities.InsertarVentaActivity"    android:exported="false"/>
-        <activity android:name=".activities.EstadisticasActivity"     android:exported="false"/>
+        <activity android:name=".activities.EstadisticasActivity"            android:exported="false"/>
+
+        <activity android:name=".activities.BuscarImportadorActivity"       android:exported="false"/>
+        <activity android:name=".activities.DetalleImportadorActivity"      android:exported="false"/>
+        <activity android:name=".activities.ImportacionesCompletasActivity" android:exported="false"/>
+        <activity android:name=".activities.AnalisisVehiculosActivity"      android:exported="false"/>
 
     </application>
 
