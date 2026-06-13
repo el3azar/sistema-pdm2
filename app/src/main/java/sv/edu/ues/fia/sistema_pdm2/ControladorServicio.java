@@ -108,4 +108,10 @@ public class ControladorServicio {
             return false;
         }
     }
+
+    public static String obtenerMensaje(String json) {
+        JSONObject obj = parsearObjeto(json, null);
+        if (obj == null) return "Sin respuesta del servidor";
+        return obj.optString("mensaje", "Respuesta sin mensaje");
+    }
 }

@@ -162,6 +162,105 @@ Respuesta:
 
 ---
 
+### 11. Historial de movimientos de un vehículo (kardex)
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_movimientos_historial.php` |
+| Método | GET |
+| Parámetros | `vin` (obligatorio) |
+| Ejemplo | `ws_movimientos_historial.php?vin=JT2S3FEJ3M1234567` |
+| Tablas | MOVIMIENTO, VEHICULO, MODELO, MARCA, TRANSPORTE, TIPO_TRANSPORTE, PERSONAL_INTERNO, BODEGA |
+
+Respuesta:
+```json
+{
+  "vehiculo": {
+    "ID_VEHICULO": 1, "VIN": "JT2S3FEJ3M1234567", "ANIO": 2022,
+    "COLOR_VEHICULO": "Blanco", "ESTADO_VEHICULO": "en bodega",
+    "NOMBRE_MODELO": "Corolla", "NOMBRE_MARCA": "Toyota"
+  },
+  "movimientos": [
+    {
+      "ID_MOVIMIENTO": 1, "TIPO_MOVIMIENTO": "entrada", "FECHA_MOVIMIENTO": "2024-01-15",
+      "MOTIVO": "Ingreso a bodega central", "NOMBRE_BODEGA": "Bodega Central",
+      "PLACA": "P-123-456", "DESCRIPCION_TIPO_TRANSPORTE": "Camión Plataforma",
+      "PERSONAL": "Juan Pérez", "CARGO": "Empleado"
+    }
+  ]
+}
+```
+Si el VIN no existe: `{ "error": "Vehiculo no encontrado" }`
+
+---
+
+### 12. Registrar movimiento (actualiza estado del vehículo)
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_movimientos_insert.php` |
+| Método | GET |
+| Parámetros | `id_vehiculo, id_transporte, id_personal, id_bodega, tipo_movimiento` (entrada/salida)`, fecha, motivo` — todos obligatorios |
+| Ejemplo | `ws_movimientos_insert.php?id_vehiculo=1&id_transporte=1&id_personal=1&id_bodega=1&tipo_movimiento=entrada&fecha=2026-06-11&motivo=Ingreso` |
+| Tablas | MOVIMIENTO (insert) + VEHICULO (update de estado) |
+
+Además de insertar el movimiento, actualiza `ESTADO_VEHICULO`:
+`entrada` → `en bodega` · `salida` → `en transito`
+
+Respuesta:
+```json
+{ "resultado": 1, "mensaje": "Movimiento registrado, vehiculo ahora: en bodega", "id": 11, "nuevo_estado": "en bodega" }
+{ "resultado": 0, "mensaje": "tipo_movimiento debe ser entrada o salida" }
+```
+
+---
+
+### 13. Reporte de transporte y personal
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_reporte_transporte_personal.php` |
+| Método | GET |
+| Parámetros | `fecha_inicio`, `fecha_fin` (ambos opcionales, formato YYYY-MM-DD) |
+| Ejemplo sin filtro | `ws_reporte_transporte_personal.php` |
+| Ejemplo con filtro | `ws_reporte_transporte_personal.php?fecha_inicio=2024-01-01&fecha_fin=2024-12-31` |
+| Tablas | MOVIMIENTO, BODEGA, PERSONAL_INTERNO, TRANSPORTE, TIPO_TRANSPORTE |
+
+Respuesta:
+```json
+{
+  "por_bodega": [
+    { "NOMBRE_BODEGA": "Bodega Central", "ENTRADAS": "3", "SALIDAS": "0", "TOTAL": "3" }
+  ],
+  "por_personal": [
+    { "PERSONAL": "Juan Pérez", "CARGO": "Empleado", "TOTAL": "4" }
+  ],
+  "por_transporte": [
+    { "PLACA": "P-123-456", "DESCRIPCION_TIPO_TRANSPORTE": "Camión Plataforma", "CAPACIDAD_MAX_VEHICULOS": "8", "VIAJES": "4" }
+  ]
+}
+```
+
+---
+
+### 14. Catálogos para formulario de movimiento (apoyo)
+| Campo | Valor |
+|---|---|
+| Archivo | `ws_movimientos_catalogos.php` |
+| Método | GET |
+| Parámetros | Ninguno |
+| Ejemplo | `ws_movimientos_catalogos.php` |
+| Tablas | VEHICULO, TRANSPORTE, TIPO_TRANSPORTE, PERSONAL_INTERNO, BODEGA |
+
+Devuelve en una sola llamada los 4 catálogos para poblar los Spinners de `InsertarMovimientoActivity`:
+```json
+{
+  "vehiculos":   [ { "ID_VEHICULO": "1", "VIN": "JT2S3FEJ3M1234567" } ],
+  "transportes": [ { "ID_TRANSPORTE": "1", "PLACA": "P-123-456", "DESCRIPCION_TIPO_TRANSPORTE": "Camión Plataforma" } ],
+  "personal":    [ { "ID_PERSONAL": "1", "PERSONAL": "Juan Pérez", "CARGO": "Empleado" } ],
+  "bodegas":     [ { "ID_BODEGA": "1", "NOMBRE_BODEGA": "Bodega Central" } ]
+}
+```
+
+---
+
 ## Constantes en Urls.java
 
 ```java
@@ -175,6 +274,10 @@ Urls.VENTAS_LISTA          // ws_ventas_lista.php
 Urls.VENTAS_INSERT         // ws_ventas_insert.php
 Urls.ESTADISTICAS          // ws_estadisticas.php
 Urls.MODELOS_POR_MARCA     // ws_modelos_por_marca.php
+Urls.MOVIMIENTOS_HISTORIAL       // ws_movimientos_historial.php
+Urls.MOVIMIENTOS_INSERT          // ws_movimientos_insert.php
+Urls.REPORTE_TRANSPORTE_PERSONAL // ws_reporte_transporte_personal.php
+Urls.MOVIMIENTOS_CATALOGOS       // ws_movimientos_catalogos.php
 ```
 
 Ejemplo de uso en una Activity:
@@ -316,66 +419,14 @@ Respuesta:
 
 ---
 
-### Eleazar — Transporte, Personal Interno, Movimiento
+### Eleazar — Transporte, Personal Interno, Movimiento ✅ IMPLEMENTADO
 
-#### ws_transportes_lista.php
-| Campo | Valor |
-|---|---|
-| Archivo | `ws_transportes_lista.php` |
-| Método | GET |
-| Parámetros | Ninguno |
-| Ejemplo | `ws_transportes_lista.php` |
-
-Respuesta:
-```json
-[
-  { "ID_TRANSPORTE": "1", "PLACA": "P-123-456", "CAPACIDAD": "5", "NOMBRE_EMPRESA": "Transportes SA" }
-]
-```
-
-#### ws_personal_lista.php
-| Campo | Valor |
-|---|---|
-| Archivo | `ws_personal_lista.php` |
-| Método | GET |
-| Parámetros | Ninguno |
-| Ejemplo | `ws_personal_lista.php` |
-
-Respuesta:
-```json
-[
-  { "ID_PERSONAL": "1", "NOMBRE_PERSONAL": "Ana", "APELLIDO_PERSONAL": "García", "CARGO": "Bodeguero" }
-]
-```
-
-#### ws_movimientos_lista.php
-| Campo | Valor |
-|---|---|
-| Archivo | `ws_movimientos_lista.php` |
-| Método | GET |
-| Parámetros | `id_vehiculo` (opcional) |
-| Ejemplo sin filtro | `ws_movimientos_lista.php` |
-| Ejemplo con filtro | `ws_movimientos_lista.php?id_vehiculo=1` |
-
-Respuesta:
-```json
-[
-  { "ID_MOVIMIENTO": "1", "FECHA_MOVIMIENTO": "2026-06-01", "VIN": "JT2S3FEJ3M1234567", "PLACA": "P-123-456", "NOMBRE_PERSONAL": "Ana" }
-]
-```
-
-#### ws_movimientos_insert.php
-| Campo | Valor |
-|---|---|
-| Archivo | `ws_movimientos_insert.php` |
-| Método | GET |
-| Parámetros | `id_vehiculo` (obligatorio), `id_transporte` (obligatorio), `id_personal` (obligatorio), `fecha` (obligatorio) |
-| Ejemplo | `ws_movimientos_insert.php?id_vehiculo=1&id_transporte=1&id_personal=1&fecha=2026-06-10` |
-
-Respuesta:
-```json
-{ "resultado": 1, "mensaje": "Movimiento registrado", "id": 5 }
-```
+Los servicios de Eleazar ya están implementados y documentados arriba como los servicios **11 a 14**
+(`ws_movimientos_historial`, `ws_movimientos_insert`, `ws_reporte_transporte_personal` y `ws_movimientos_catalogos`).
+Se reemplazó la propuesta original de listas simples por servicios con más valor: una consulta cruzada
+(historial/kardex de MOVIMIENTO), un insert con lógica de negocio (actualiza el estado del vehículo) y un
+reporte agregado sobre TRANSPORTE y PERSONAL_INTERNO. Las Activities correspondientes son
+`HistorialMovimientosActivity`, `InsertarMovimientoActivity` y `ReporteTransportePersonalActivity`.
 
 ---
 
