@@ -113,7 +113,23 @@
                 android:id="@+id/btnEstadisticas"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/menu_estadisticas"
+                android:onClick="lanzar"/>
+
+            <Button
+                android:id="@+id/btnBuscarImportador"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/menu_buscar_importador"
+                android:onClick="lanzar"/>
+
+            <Button
+                android:id="@+id/btnAnalisisVehiculos"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="@string/menu_analisis_vehiculos"
                 android:onClick="lanzar"/>
 
         </LinearLayout>
