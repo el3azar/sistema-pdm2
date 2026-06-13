@@ -117,7 +117,6 @@ public class InsertarDesperfectoActivity extends AppCompatActivity {
             runOnUiThread(() -> {
                 if (exito) {
                     txtResultado.setText("¡Desperfecto registrado exitosamente!");
-                    editDescripcion.setText("");
                     Toast.makeText(this, "Guardado correctamente", Toast.LENGTH_SHORT).show();
                 } else {
                     txtResultado.setText("Error al registrar: verifique que el vehículo exista en el servidor seleccionado.");
