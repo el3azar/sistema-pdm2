@@ -10,6 +10,7 @@ public final class Urls {
 
     private static final String EXTERNO = "https://serviciosguia8.page.gd/inventario_gpo02/";
 
+
     // Servicios disponibles
     public static final String MARCAS_LISTA          = "ws_marcas_lista.php";
     public static final String VEHICULOS_LISTA       = "ws_vehiculos_lista.php";
