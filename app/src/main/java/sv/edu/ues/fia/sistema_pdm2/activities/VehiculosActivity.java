@@ -12,8 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONObject;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import sv.edu.ues.fia.sistema_pdm2.ControladorServicio;
 import sv.edu.ues.fia.sistema_pdm2.R;
@@ -33,6 +36,8 @@ public class VehiculosActivity extends AppCompatActivity {
         listView = findViewById(R.id.listView);
         spinnerEstado = findViewById(R.id.spinnerEstado);
         ((TextView) findViewById(R.id.tvTitulo)).setText("Vehículos");
+
+        cargarEstadosDesdeBD(0);
 
         // Al hacer clic en un vehículo, vamos a ver sus desperfectos
         listView.setOnItemClickListener((parent, view, position, id) -> {
@@ -56,7 +61,7 @@ public class VehiculosActivity extends AppCompatActivity {
         if (estadoSeleccionado.equals("Todos")) {
             url = Urls.build(servidor, Urls.VEHICULOS_LISTA);
         } else {
-            url = Urls.build(servidor, Urls.VEHICULOS_POR_ESTADO, "estado=" + estadoSeleccionado);
+            url = Urls.build(servidor, Urls.VEHICULOS_POR_ESTADO, "estado=" + encode(estadoSeleccionado));
         }
 
         new Thread(() -> {
@@ -78,5 +83,31 @@ public class VehiculosActivity extends AppCompatActivity {
                 listView.setAdapter(new ArrayAdapter<>(this, R.layout.item_lista_bonita, filas));
             });
         }).start();
+    }
+
+    private void cargarEstadosDesdeBD(int servidor) {
+        new Thread(() -> {
+            String json = ControladorServicio.get(Urls.build(servidor, Urls.VEHICULOS_LISTA), this);
+            List<JSONObject> vehiculos = ControladorServicio.parsearArray(json, this);
+            Set<String> estados = new LinkedHashSet<>();
+            estados.add("Todos");
+            for (JSONObject vehiculo : vehiculos) {
+                String estado = vehiculo.optString("ESTADO_VEHICULO", "").trim();
+                if (!estado.isEmpty()) estados.add(estado);
+            }
+            runOnUiThread(() -> spinnerEstado.setAdapter(new ArrayAdapter<>(
+                    this,
+                    android.R.layout.simple_spinner_dropdown_item,
+                    new ArrayList<>(estados)
+            )));
+        }).start();
+    }
+
+    private String encode(String valor) {
+        try {
+            return URLEncoder.encode(valor, "UTF-8");
+        } catch (Exception e) {
+            return valor;
+        }
     }
 }

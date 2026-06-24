@@ -5,7 +5,7 @@ public final class Urls {
     private Urls() {}
 
     // ── Cambiar la IP según la máquina de cada integrante ──────────────
-    private static final String LOCAL   = "http://192.168.56.1/inventario_gpo02/";
+    private static final String LOCAL   = "http://172.16.61.14/inventario_gpo02/";
     // ───────────────────────────────────────────────────────────────────
 
     private static final String EXTERNO = "https://inventario-api.elforaneo.com/";

@@ -62,6 +62,7 @@
         <item>en reparacion</item>
         <item>vendido</item>
         <item>transito</item>
+        <item>en transito</item>
     </string-array>
 
     <string-array name="estados_registro">
@@ -70,5 +71,6 @@
         <item>en reparacion</item>
         <item>vendido</item>
         <item>transito</item>
+        <item>en transito</item>
     </string-array>
 </resources>
