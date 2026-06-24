@@ -37,7 +37,7 @@ public class VehiculosActivity extends AppCompatActivity {
         spinnerEstado = findViewById(R.id.spinnerEstado);
         ((TextView) findViewById(R.id.tvTitulo)).setText("Vehículos");
 
-        cargarEstadosDesdeBD(0);
+        cargarEstadosDesdeBD();
 
         // Al hacer clic en un vehículo, vamos a ver sus desperfectos
         listView.setOnItemClickListener((parent, view, position, id) -> {
@@ -85,22 +85,35 @@ public class VehiculosActivity extends AppCompatActivity {
         }).start();
     }
 
-    private void cargarEstadosDesdeBD(int servidor) {
+    private void cargarEstadosDesdeBD() {
+        Set<String> estados = new LinkedHashSet<>();
+        for (String estado : getResources().getStringArray(R.array.estados_vehiculo)) {
+            estados.add(estado);
+        }
+        configurarSpinnerEstados(estados);
+
         new Thread(() -> {
-            String json = ControladorServicio.get(Urls.build(servidor, Urls.VEHICULOS_LISTA), this);
-            List<JSONObject> vehiculos = ControladorServicio.parsearArray(json, this);
-            Set<String> estados = new LinkedHashSet<>();
-            estados.add("Todos");
-            for (JSONObject vehiculo : vehiculos) {
-                String estado = vehiculo.optString("ESTADO_VEHICULO", "").trim();
-                if (!estado.isEmpty()) estados.add(estado);
-            }
-            runOnUiThread(() -> spinnerEstado.setAdapter(new ArrayAdapter<>(
-                    this,
-                    android.R.layout.simple_spinner_dropdown_item,
-                    new ArrayList<>(estados)
-            )));
+            cargarEstadosServidor(0, estados);
+            cargarEstadosServidor(1, estados);
+            runOnUiThread(() -> configurarSpinnerEstados(estados));
         }).start();
+    }
+
+    private void cargarEstadosServidor(int servidor, Set<String> estados) {
+        String json = ControladorServicio.get(Urls.build(servidor, Urls.VEHICULOS_LISTA), this);
+        List<JSONObject> vehiculos = ControladorServicio.parsearArray(json, this);
+        for (JSONObject vehiculo : vehiculos) {
+            String estado = vehiculo.optString("ESTADO_VEHICULO", "").trim();
+            if (!estado.isEmpty()) estados.add(estado);
+        }
+    }
+
+    private void configurarSpinnerEstados(Set<String> estados) {
+        spinnerEstado.setAdapter(new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_dropdown_item,
+                new ArrayList<>(estados)
+        ));
     }
 
     private String encode(String valor) {
